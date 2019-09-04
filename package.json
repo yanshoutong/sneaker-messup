@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blackmiaool/decent-messup.git"
+    "url": "git+https://github.com/yanshoutong/sneaker-messup.git"
   },
-  "author": "blackmiaool",
+  "author": "triphop",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/blackmiaool/decent-messup/issues"
+    "url": "https://github.com/yanshoutong/sneaker-messup/issues"
   },
-  "homepage": "https://github.com/blackmiaool/decent-messup#readme",
+  "homepage": "https://github.com/yanshoutong/sneaker-messup#readme",
   "dependencies": {
     "@babel/generator": "^7.4.4",
     "@babel/parser": "^7.4.4",

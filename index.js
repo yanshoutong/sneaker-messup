@@ -16,13 +16,14 @@ function messUp(code, opt) {
 
     const {
         headCnt = 3,
-            es6 = false,
+        es6 = false,
+        suffix = null,
     } = opt;
 
     const ast = babelParser.parse(code, {
         sourceType: 'module'
     });
-//    console.log(JSON.parse(JSON.stringify(ast)));
+    //    console.log(JSON.parse(JSON.stringify(ast)));
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     const declarWord = es6 ? 'const' : 'var';
 
@@ -111,7 +112,7 @@ function messUp(code, opt) {
                     code = code.replace(/\n/g, "\\n");
                     code = code.replace(/'/g, "\\'");
                     const char = alphabet[i % alphabet.length];
-                    const name = path.scope.generateUidIdentifier(char).name;
+                    const name = path.scope.generateUidIdentifier(char).name + suffix;
                     v.name = name;
                     decentMap[name] = name;
                     tpl += `${declarWord} ${name}='${code}';`;
@@ -130,7 +131,7 @@ function messUp(code, opt) {
             const decentMap = {}
             headerArr.forEach(function (v, i) {
                 const char = alphabet[i % alphabet.length];
-                const name = path.scope.generateUidIdentifier(char).name;
+                const name = path.scope.generateUidIdentifier(char).name + suffix;
                 tpl += `${declarWord} ${name}=${v.name};`;
                 decentMap[v.name] = name;
             });

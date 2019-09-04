@@ -2,6 +2,9 @@
     <img src="http://blackmiaool.com/decent-messup/header.jpg">
 </p>
 
+# sneaker-messup is stolen from decent-messup, the only difference is that I added 'suffix' option to let user add suffix to per variable.  
+---
+
 # Decent Mess Up
 
 Want to understand my js? No way!
@@ -55,14 +58,14 @@ func();
 ### Install
 
 ```bash
-npm i -D decent-messup
+npm i -D sneaker-messup
 ```
 
 ### Usage
 Use it before babel and uglifying. Using it with uglifier is highly recommended.
 
 ```js
-const messup=require('decent-messup');
+const messup=require('sneaker-messup');
 messup(yourcode[,options]);
 ```
 
@@ -72,7 +75,7 @@ messup(yourcode[,options]);
 module: {
     loaders: [{
         test: /\.jsx?$/,
-        loader: 'decent-messup/loader',
+        loader: 'sneaker-messup/loader',
         query: {
             headCnt:5,
             es6:true
@@ -92,7 +95,7 @@ module: {
 
 ```js
 const transform = require('gulp-transform');
-const messup = require('decent-messup');
+const messup = require('sneaker-messup');
 gulp.task('quadruple', function() {
   return gulp.src('src/*.js')
     .pipe(transform('utf8', code => messup(code,{headCnt:5,es6:true})))
@@ -107,7 +110,8 @@ The default options are:
 ```js
 {
     headCnt: 3,
-    es6:false
+    es6:false,
+    suffix: null,
 }
 ```
 
@@ -156,3 +160,19 @@ const _c = 'bc';
 a = { [_b[0]]: _b[1] };
 ```
 
+#### `suffix`
+add suffix to per variable.
+
+Input:
+```js
+a={b:'c'}
+```
+
+suffix = '$':
+
+```js
+var _a$ = 'c';
+var _b$ = 'c';
+var _c$ = 'c';
+a = { b: _c$[0] };
+```
