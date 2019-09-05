@@ -112,7 +112,7 @@ function messUp(code, opt) {
                     code = code.replace(/\n/g, "\\n");
                     code = code.replace(/'/g, "\\'");
                     const char = alphabet[i % alphabet.length];
-                    const name = path.scope.generateUidIdentifier(char).name + suffix;
+                    const name = path.scope.generateUidIdentifier(char).name + (!!suffix ? suffix : '');
                     v.name = name;
                     decentMap[name] = name;
                     tpl += `${declarWord} ${name}='${code}';`;
@@ -131,7 +131,7 @@ function messUp(code, opt) {
             const decentMap = {}
             headerArr.forEach(function (v, i) {
                 const char = alphabet[i % alphabet.length];
-                const name = path.scope.generateUidIdentifier(char).name + suffix;
+                const name = path.scope.generateUidIdentifier(char).name + (!!suffix ? suffix : '');
                 tpl += `${declarWord} ${name}=${v.name};`;
                 decentMap[v.name] = name;
             });
